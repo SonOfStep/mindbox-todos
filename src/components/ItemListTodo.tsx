@@ -3,11 +3,14 @@ import { EStatus, ITodo } from "../App";
 
 interface IProps {
   todo: ITodo;
-  toggleStatus: (id: number) => void;
+  toggleStatus?: (id: number) => void;
 }
 
 const ItemListTodo = ({ todo, toggleStatus }: IProps): JSX.Element => {
   const handleToggleStatus = () => {
+    if (toggleStatus === undefined) {
+      return;
+    }
     toggleStatus(todo.id);
   };
   return (
